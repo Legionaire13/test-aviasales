@@ -1,0 +1,85 @@
+.tickets {
+  &__button-list {
+    margin: 10px;
+    padding: 0;
+
+    display: flex;
+
+    list-style: none;
+  }
+
+  &__button {
+    width: 251px;
+    height: 50px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    &--left {
+      border-top-left-radius: 7px;
+      border-bottom-left-radius: 7px;
+    }
+
+    &--right {
+      border-top-right-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    &--active {
+      color: #ffffff;
+      background: #2196f3;
+      width: 252px; // pixel perfect!
+
+      border: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__list {
+    list-style: none;
+
+    margin: 10px;
+    padding: 0px;
+  }
+}
+
+/* mob */
+@media screen and (min-width: 320px) and (max-width: 550px) {
+  .tickets__list {
+    margin: 5px;
+  }
+
+  .tickets__button-list {
+    margin-left: 5px;
+    margin-right: 5px;
+    justify-content: center;
+  }
+
+  .tickets__button,
+  .tickets__button--active {
+    width: 150px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 425px) {
+  .tickets__button,
+  .tickets__button--active {
+    min-width: 100%;
+  }
+}

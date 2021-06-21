@@ -1,0 +1,95 @@
+.filter {
+  width: 232px;
+  height: 252px;
+
+  padding: 0;
+  margin: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  font-family: "Open Sans";
+  font-size: 13px;
+  line-height: 20px;
+  font-style: normal;
+  font-weight: normal;
+
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+  &__headline {
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+    letter-spacing: 0.5px;
+
+    margin: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__item {
+    width: 100%;
+  }
+
+  &__input {
+    // &:checked + .filter__label::before {
+    //   border: 1px solid #2196f3;
+
+    //   background-color: transparent;
+    //   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik00LjI4NTcxIDhMMCA0LjE2MTIzTDEuMjA4NTcgMy4wNzg3TDQuMjg1NzEgNS44MjcyNkwxMC43OTE0IDBMMTIgMS4wOTAyMUw0LjI4NTcxIDhaIiBmaWxsPSIjMjE5NkYzIi8+Cjwvc3ZnPgo=");
+    //   background-position: 50% 50%;
+    //   background-repeat: no-repeat;
+    // }
+
+    &--checked + .filter__label::before {
+      border: 1px solid #2196f3;
+
+      background-color: transparent;
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik00LjI4NTcxIDhMMCA0LjE2MTIzTDEuMjA4NTcgMy4wNzg3TDQuMjg1NzEgNS44MjcyNkwxMC43OTE0IDBMMTIgMS4wOTAyMUw0LjI4NTcxIDhaIiBmaWxsPSIjMjE5NkYzIi8+Cjwvc3ZnPgo=");
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__label {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    user-select: none;
+
+    &:hover {
+      background-color: #f1fcff;
+      cursor: pointer;
+    }
+
+    &::before {
+      content: "";
+
+      display: inline-block;
+
+      width: 20px;
+      height: 20px;
+
+      margin: 10px;
+      margin-left: 20px;
+
+      border: 1px solid #9abbce;
+      box-sizing: border-box;
+      border-radius: 2px;
+    }
+  }
+}
+
+/* mob */
+@media screen and (min-width: 320px) and (max-width: 550px) {
+  .filter {
+    min-width: calc(100% - 10px);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
