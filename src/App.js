@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from "react"
-import Filter from "./components/Filter/Filter"
-import Tickets from "./components/Tickets/Tickets"
-import getTickets from "./getTickets"
-import getTicketsFiltered from "./getTicketsFiltered"
-import getTicketsSorted from "./getTicketsSorted"
-import Logo from "./components/Logo/Logo"
+import React, { useState, useEffect, useCallback } from "react"
+import { Filter, Tickets, Logo } from "./components"
+import { getTickets, getTicketsFiltered, getTicketsSorted } from "./logic"
 import "./App.scss"
 
 const App = () => {
@@ -42,44 +38,54 @@ const App = () => {
   }
   const [appState, setAppState] = useState(initialState)
 
-  const handleFilter = (e) => {
-    e.preventDefault()
-    // e.stopPropagation()
+  const handleFilter = useCallback(
+    (e) => {
+      e.stopPropagation()
 
-    return e.target.name !== "all"
-      ? setAppState({ 
-          ...appState,
-          filters: appState.filters.map((filter) => {
-            if (filter.name === "all") {
-              filter.checked = false
+      const updatedFilters =
+        e.target.name !== "all"
+          ? {
+              ...appState,
+              filters: appState.filters.map((filter) => {
+                if (filter.name === "all") {
+                  filter.checked = false
+                }
+
+                if (filter.name === e.target.name) {
+                  filter.checked = e.target.checked
+                }
+                return filter
+              }),
+            }
+          : {
+              ...appState,
+              filters: appState.filters.map((filter) => {
+                filter.checked = e.target.checked
+
+                return filter
+              }),
             }
 
-            if (e.target.name === filter.name) {
-              filter.checked = !filter.checked
-            }
+      return setAppState(updatedFilters)
+    },
 
-            return filter
-          }),
-        })
-      : setAppState({
-          ...appState,
-          filters: appState.filters.map((filter) => {
-            filter.checked = e.target.checked
+    // eslint-disable-next-line
+    [appState]
+  )
 
-            return filter
-          }),
-        })
-  }
-
-  const handleSorting = () =>
-    setAppState({
-      ...appState,
-      isCheapest: !appState.isCheapest,
-    })
+  const handleSorting = useCallback(
+    () =>
+      setAppState({
+        ...appState,
+        isCheapest: !appState.isCheapest,
+      }),
+    [appState]
+  )
 
   const useFetchRequest = (appState) => {
     const [result, setResult] = useState([])
     const { filters, isCheapest, lastReq } = appState
+    const requestTimeout = 30000
 
     useEffect(() => {
       async function fetchRequest() {
@@ -87,7 +93,7 @@ const App = () => {
 
         let res
 
-        if (Date.now() - lastReq < 5000) {
+        if (Date.now() - lastReq < requestTimeout) {
           res = JSON.parse(sessionStorage.getItem("tickets"))
         } else {
           res = await getTickets()

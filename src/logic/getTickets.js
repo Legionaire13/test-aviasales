@@ -1,8 +1,8 @@
-import mock from "./mocks/mock_tickets"
+import mock from "../mocks/mock_tickets"
 
-export default async function getTickets() {
+export const getTickets = async () => {
   // получаем searchID
-  async function getSearchId() {
+  const getSearchId = async () => {
     console.log(`...getting an ID for tickets request`)
     let response
     try {
@@ -18,14 +18,13 @@ export default async function getTickets() {
   }
 
   // получаем массив с билетами
-  async function getTicketsTotalArr(searchId) {
+  const getTicketsTotalArr = async (searchId) => {
     console.log(`...getting total array of tickets`)
     let response
+    const url = `https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`
 
     try {
-      response = await fetch(
-        `https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`
-      )
+      response = await fetch(url)
     } catch (e) {
       console.error(e.error)
     }
@@ -44,7 +43,11 @@ export default async function getTickets() {
   const searchID = await getSearchId()
 
   // возвращаем макет если не был получен id поиска
-  if (!searchID) return mock
+  if (!searchID) {
+    console.error(`Can't get an searchID from server
+     ---> ...mock_tickes.js is loaded`)
+    return mock
+  }
 
   let totalTicketsArr = []
   await getTicketsTotalArr(searchID)
@@ -52,4 +55,4 @@ export default async function getTickets() {
   return totalTicketsArr
 }
 
-// await getTickets()
+export default getTickets

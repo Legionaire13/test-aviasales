@@ -1,4 +1,4 @@
-export default function getTicketsFiltered(arrOfTickets, filters) {
+export const getTicketsFiltered = (arrOfTickets, filters) => {
   let maxStops = 0
 
   filters.forEach((option) => {
@@ -7,7 +7,7 @@ export default function getTicketsFiltered(arrOfTickets, filters) {
       : false
   })
 
-  return [...arrOfTickets].filter((ticket) => {
+  return arrOfTickets.filter((ticket) => {
     const { segments } = ticket
     const [firstSegment, secondSegment] = segments
 
@@ -17,3 +17,5 @@ export default function getTicketsFiltered(arrOfTickets, filters) {
       : false
   })
 }
+
+export default getTicketsFiltered

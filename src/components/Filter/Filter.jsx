@@ -32,10 +32,17 @@ const Filter = ({ filters, onChange }) => {
   }
 
   return (
-    <ul className="filter list">
-      <h2 className="filter__headline">Количество пересадок</h2>
-      {filters.map((item, i) => renderFilter(item, i))}
-    </ul>
+    <div className="filter">
+      <h2
+        className="filter__headline"
+        tabIndex="0"
+        aria-label="Выберите допустимое количество пересадок">
+        Количество пересадок
+      </h2>
+      <ul className="filter__list list">
+        {filters.map((item, i) => renderFilter(item, i))}
+      </ul>
+    </div>
   )
 }
 

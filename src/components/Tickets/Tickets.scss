@@ -1,4 +1,23 @@
 .tickets {
+  &__headline {
+    color: #dfe5ec;
+    font-size: 16px;
+
+    margin-left: 10px;
+    max-width: 100%;
+
+    position: absolute;
+    top: 120px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__list-item {
+    flex-grow: 1;
+  }
+
   &__button-list {
     margin: 10px;
     padding: 0;
@@ -48,6 +67,14 @@
 
     &:focus {
       outline: none;
+    }
+
+    &--left:focus {
+      color: #dfe5ec;
+    }
+
+    &--right:focus {
+      color: #dfe5ec;
     }
   }
 

@@ -7,10 +7,14 @@ import "./Tickets.scss"
 const Tickets = ({ tickets, sorting, handleSorting, loading }) => {
   return (
     <div className="tickets">
-      <h2 className="visually-hidden">Билеты</h2>
+      <h2 className="tickets__headline visually-hidden" tabIndex="0">
+        Сортировка билетов по цене и быстроте доставки
+      </h2>
 
-      <ul className="tickets__button-list">
-        <li>
+      <ul
+        className="tickets__button-list"
+      >
+        <li className="tickets__list-item">
           <button
             className={`tickets__button tickets__button--left ${
               sorting ? `tickets__button--active` : ``
@@ -19,7 +23,7 @@ const Tickets = ({ tickets, sorting, handleSorting, loading }) => {
             Самый дешевый
           </button>
         </li>
-        <li>
+        <li className="tickets__list-item">
           <button
             className={`tickets__button tickets__button--right ${
               sorting ? `` : `tickets__button--active`

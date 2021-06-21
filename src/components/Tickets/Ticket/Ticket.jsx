@@ -85,7 +85,7 @@ const Ticket = ({ details }) => {
 }
 
 Ticket.propTypes = {
-  details: PropTypes.array.isRequired,
+  details: PropTypes.object.isRequired,
 }
 
 export default Ticket

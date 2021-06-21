@@ -52,6 +52,10 @@ input[type="radio"].visually-hidden {
   list-style: none;
 }
 
+*:focus {
+  outline-color: #2196f3;
+}
+
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
   input[type="checkbox"],
   input[type="radio"] {
