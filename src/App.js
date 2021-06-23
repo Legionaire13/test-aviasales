@@ -85,7 +85,7 @@ const App = () => {
   const useFetchRequest = (appState) => {
     const [result, setResult] = useState([])
     const { filters, isCheapest, lastReq } = appState
-    const requestTimeout = 30000
+    const requestTimeout = 45000
 
     useEffect(() => {
       async function fetchRequest() {
