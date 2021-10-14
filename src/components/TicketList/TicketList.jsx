@@ -1,19 +1,16 @@
 import React from "react"
-import Ticket from "./Ticket/Ticket"
-import Loader from "./Loader/Loader"
+import { Ticket, Loader } from "../index"
 import PropTypes from "prop-types"
-import "./Tickets.scss"
+import "./TicketList.scss"
 
-const Tickets = ({ tickets, sorting, handleSorting, loading }) => {
+const TicketList = ({ tickets, sorting, handleSorting, loading }) => {
   return (
     <div className="tickets">
       <h2 className="tickets__headline visually-hidden" tabIndex="0">
         Сортировка билетов по цене и быстроте доставки
       </h2>
 
-      <ul
-        className="tickets__button-list"
-      >
+      <ul className="tickets__button-list">
         <li className="tickets__list-item">
           <button
             className={`tickets__button tickets__button--left ${
@@ -46,11 +43,11 @@ const Tickets = ({ tickets, sorting, handleSorting, loading }) => {
   )
 }
 
-Tickets.propTypes = {
+TicketList.propTypes = {
   tickets: PropTypes.array.isRequired,
   sorting: PropTypes.bool.isRequired,
   handleSorting: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
 }
 
-export default Tickets
+export default TicketList

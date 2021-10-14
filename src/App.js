@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { Filter, Tickets, Logo } from "./components"
+import { Filter, TicketList, Logo } from "./components"
 import { getTickets, getTicketsFiltered, getTicketsSorted } from "./logic"
 import "./App.scss"
 
@@ -126,7 +126,7 @@ const App = () => {
       </header>
       <main className="main">
         <Filter filters={appState.filters} onChange={handleFilter} />
-        <Tickets
+        <TicketList
           tickets={useFetchRequest(appState)}
           sorting={appState.isCheapest}
           handleSorting={handleSorting}
